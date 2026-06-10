@@ -1,13 +1,7 @@
 #include <stdio.h>
 
-// Desafio Super Trunfo - Países
-// Tema 1 - Cadastro das cartas
-// Objetivo: No nível novato você deve criar as cartas representando as cidades utilizando scanf para entrada de dados e printf para exibir as informações.
-
 int main() {
-  // Área para definição das variáveis para armazenar as propriedades das cidades
-  
-// --- DECLARAÇÃO DE VARIÁVEIS ---
+    // --- DECLARAÇÃO DE VARIÁVEIS ---
     
     // Variáveis para a Carta 1
     char estado1;
@@ -17,6 +11,8 @@ int main() {
     float area1;
     float pib1;
     int pontosTuristicos1;
+    float densidadePopulacional1; // Variável para calcular a densidade populacional da Carta 1
+    float pibPerCapita1; // Variável para calcular o PIB per capita da Carta 1
 
     // Variáveis para a Carta 2
     char estado2;
@@ -26,9 +22,10 @@ int main() {
     float area2;
     float pib2;
     int pontosTuristicos2;
-  
-  // Área para entrada de dados
-// --- CADASTRO DA CARTA 1 ---
+    float densidadePopulacional2; // Variável para calcular a densidade populacional da Carta 2
+    float pibPerCapita2; // Variável para calcular o PIB per capita da Carta 2
+
+    // --- CADASTRO DA CARTA 1 ---
     printf("=== Cadastro da Carta 1 ===\n");
     
     printf("Digite a letra do Estado (A-H): ");
@@ -55,6 +52,14 @@ int main() {
     scanf("%d", &pontosTuristicos1);
     printf("\n");
 
+    // Cálculo da densidade populacional da Carta 1
+    densidadePopulacional1 = populacao1 / area1;
+    //printf("Densidade Populacional da Carta 1: %.2f habitantes/km²\n", densidadePopulacional1);
+    // Cálculo do PIB per capita da Carta 1
+    pibPerCapita1 = (pib1 * 1000000000) / populacao1; // Convertendo o PIB de bilhões para reais antes de dividir pela população
+    //printf("PIB per Capita da Carta 1: %.2f reais\n", pibPerCapita1);
+
+
     // --- CADASTRO DA CARTA 2 ---
     printf("=== Cadastro da Carta 2 ===\n");
     
@@ -80,12 +85,15 @@ int main() {
     scanf("%d", &pontosTuristicos2);
     printf("\n");
 
+    // Cálculo da densidade populacional da Carta 2
+    densidadePopulacional2 = populacao2 / area2;
+    //printf("Densidade Populacional da Carta 2: %.2f habitantes/km²\n", densidadePopulacional2);
+    // Cálculo do PIB per capita da Carta 2
+    pibPerCapita2 = (pib2 * 1000000000) / populacao2; // Convertendo o PIB de bilhões para reais antes de dividir pela população
+    //printf("PIB per Capita da Carta 2: %.2f reais\n", pibPerCapita2);
 
 
-
-  // Área para exibição dos dados da cidade
-
-// --- EXIBIÇÃO DOS DADOS ---
+    // --- EXIBIÇÃO DOS DADOS ---
     printf("===============================\n");
     printf("     CARTAS CADASTRADAS        \n");
     printf("===============================\n\n");
@@ -100,6 +108,14 @@ int main() {
     printf("PIB: %.2f bilhões de reais\n", pib1);
     printf("Número de Pontos Turísticos: %d\n\n", pontosTuristicos1);
 
+    // Cálculo da densidade populacional da Carta 1
+    //densidadePopulacional1 = populacao1 / area1;
+    printf("Densidade Populacional da Carta 1: %.2f habitantes/km²\n", densidadePopulacional1);
+    // Cálculo do PIB per capita da Carta 1
+    //pibPerCapita1 = (pib1 * 1000000000) / populacao1; // Convertendo o PIB de bilhões para reais antes de dividir pela população
+    printf("PIB per Capita da Carta 1: %.2f reais\n", pibPerCapita1);   
+    printf("\n");
+
     // Exibição da Carta 2
     printf("Carta 2:\n");
     printf("Estado: %c\n", estado2);
@@ -108,8 +124,21 @@ int main() {
     printf("População: %d\n", populacao2);
     printf("Área: %.2f km²\n", area2);
     printf("PIB: %.2f bilhões de reais\n", pib2);
+    printf("Densidade Populacional: %.2f habitantes/km²\n", densidadePopulacional2);
+    printf("PIB per Capita: %.2f reais\n", pibPerCapita2);
     printf("Número de Pontos Turísticos: %d\n", pontosTuristicos2);
 
 
-return 0;
-} 
+    // Cálculo da densidade populacional da Carta 2
+    //densidadePopulacional2 = populacao2 / area2;
+    printf("Densidade Populacional da Carta 2: %.2f habitantes/km²\n", densidadePopulacional2);
+    // Cálculo do PIB per capita da Carta 2
+    //pibPerCapita2 = (pib2 * 1000000000) / populacao2; // Convertendo o PIB de bilhões para reais antes de dividir pela população
+    printf("PIB per Capita da Carta 2: %.2f reais\n", pibPerCapita2);
+
+    
+
+
+
+    return 0;
+}
