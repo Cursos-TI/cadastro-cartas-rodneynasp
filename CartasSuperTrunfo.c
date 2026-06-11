@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#include <stdio.h>
+
 int main() {
     // --- DECLARAÇÃO DE VARIÁVEIS ---
     
@@ -7,23 +9,25 @@ int main() {
     char estado1;
     char codigo1[4]; // 3 caracteres + o terminador '\0' (ex: "A01")
     char cidade1[50]; // Suporta nomes de cidades com até 49 caracteres
-    int populacao1;
+    unsigned int populacao1;
     float area1;
     float pib1;
     int pontosTuristicos1;
     float densidadePopulacional1; // Variável para calcular a densidade populacional da Carta 1
     float pibPerCapita1; // Variável para calcular o PIB per capita da Carta 1
+    float super_poder1;
 
     // Variáveis para a Carta 2
     char estado2;
     char codigo2[4];
     char cidade2[50];
-    int populacao2;
+    unsigned int  populacao2;
     float area2;
     float pib2;
     int pontosTuristicos2;
     float densidadePopulacional2; // Variável para calcular a densidade populacional da Carta 2
     float pibPerCapita2; // Variável para calcular o PIB per capita da Carta 2
+    float super_poder2;
 
     // --- CADASTRO DA CARTA 1 ---
     printf("=== Cadastro da Carta 1 ===\n");
@@ -58,6 +62,8 @@ int main() {
     // Cálculo do PIB per capita da Carta 1
     pibPerCapita1 = (pib1 * 1000000000) / populacao1; // Convertendo o PIB de bilhões para reais antes de dividir pela população
     //printf("PIB per Capita da Carta 1: %.2f reais\n", pibPerCapita1);
+    // Super Poder: Soma de todos os atributos + inverso da densidade
+    super_poder1 = (unsigned int)populacao1 + (float)area1 + (float)pib1 + (int)pontosTuristicos1 + pibPerCapita1 + (1.0f / densidadePopulacional1);
 
 
     // --- CADASTRO DA CARTA 2 ---
@@ -91,6 +97,11 @@ int main() {
     // Cálculo do PIB per capita da Carta 2
     pibPerCapita2 = (pib2 * 1000000000) / populacao2; // Convertendo o PIB de bilhões para reais antes de dividir pela população
     //printf("PIB per Capita da Carta 2: %.2f reais\n", pibPerCapita2);
+
+     // Super Poder: Soma de todos os atributos + inverso da densidade
+    super_poder2 = (unsigned int)populacao2 + (float)area2 + (float)pib2 + (int)pontosTuristicos2 + pibPerCapita2 + (1.0f / densidadePopulacional2);
+
+
 
 
     // --- EXIBIÇÃO DOS DADOS ---
@@ -137,6 +148,24 @@ int main() {
     printf("PIB per Capita da Carta 2: %.2f reais\n", pibPerCapita2);
 
     
+// --- EXIBIÇÃO DOS RESULTADOS E COMPARAÇÃO ---
+    printf("\nComparação de Cartas:\n");
+
+    // Para a maioria, o maior vence (carta 1 > carta 2)
+    printf("População: Carta %u venceu (%u)\n", (populacao1 > populacao2) ? 1 : 2, populacao1 > populacao2);
+    printf("Área: Carta %d venceu (%d)\n", (area1 > area2) ? 1 : 2, area1 > area2);
+    printf("PIB: Carta %d venceu (%d)\n", (pib1 > pib2) ? 1 : 2, pib1 > pib2);
+    printf("Pontos Turísticos: Carta %d venceu (%d)\n", (pontosTuristicos1 > pontosTuristicos2) ? 1 : 2, pontosTuristicos1 > pontosTuristicos2);
+    
+    // Densidade Populacional: O MENOR valor vence (carta1 < carta2)
+    printf("Densidade Populacional: Carta %d venceu (%d)\n", (densidadePopulacional1 < densidadePopulacional2) ? 1 : 2, densidadePopulacional1 < densidadePopulacional2);
+    
+    printf("PIB per Capita: Carta %d venceu (%d)\n", (pibPerCapita1 > pibPerCapita2) ? 1 : 2, pibPerCapita1 > pibPerCapita2);
+    printf("Super Poder: Carta %d venceu (%d)\n", (super_poder1 > super_poder2) ? 1 : 2, super_poder1 > super_poder2);
+
+    
+
+
 
 
 
